@@ -2,15 +2,11 @@
 
 前面我们已经讲解了Web前端开发的基础知识，也讲解了Web后端开发的基础(HTTP协议、请求响应)，并且也讲解了数据库MySQL，以及通过Mybatis框架如何来完成数据库的基本操作。 那接下来，我们就通过一个案例，来将前端开发、后端开发、数据库整合起来。 而这个案例呢，就是我们前面提到的Tlias智能学习辅助系统。
 
-![](assets/image-20220904104826854.png)
-
 在这个案例中，前端开发人员已经将前端工程开发完毕了。 我们需要做的，就是参考接口文档完成后端功能的开发，然后结合前端工程进行联调测试即可。
 
 
 
 **完成后的成品效果展示：**
-
-![image-20220904103734643](assets/image-20220904103734643.png)
 
 
 
@@ -42,7 +38,6 @@
 
 **1、部门管理**
 
-![image-20221213205503102](assets/image-20221213205503102.png)
 
 部门管理功能开发包括：
 
@@ -55,7 +50,6 @@
 
 **2、员工管理**
 
-![image-20221213205737307](assets/image-20221213205737307.png)
 
 员工管理功能开发包括：
 
@@ -67,8 +61,6 @@
 
 
 #### 1.1.2 环境搭建
-
-![image-20221213230710821](assets/image-20221213230710821.png)
 
 
 
@@ -136,9 +128,8 @@ INSERT INTO emp
 
 第2步：创建一个SpringBoot工程，选择引入对应的起步依赖（web、mybatis、mysql驱动、lombok） (版本选择2.7.5版本，可以创建完毕之后，在pom.xml文件中更改版本号)
 
-![image-20221213221142985](assets/image-20221213221142985.png)
 
-![image-20221213221408420](assets/image-20221213221408420.png)
+
 
 生成的pom.xml文件：
 
@@ -211,7 +202,6 @@ INSERT INTO emp
 
 创建项目工程目录结构：
 
-![image-20221213222039985](assets/image-20221213222039985.png)
 
 
 
@@ -381,8 +371,6 @@ public class EmpController {
 
 项目工程结构：
 
-![image-20221213224927868](assets/image-20221213224927868.png)
-
 
 
 
@@ -397,13 +385,11 @@ public class EmpController {
 
 我们的案例是基于当前最为主流的前后端分离模式进行开发。
 
-![image-20221213230911102](assets/image-20221213230911102.png)
 
 在前后端分离的开发模式中，前后端开发人员都需要根据提前定义好的接口文档，来进行前后端功能的开发。
 
 > 后端开发人员：必须严格遵守提供的接口文档进行后端功能开发（保障开发的功能可以和前端对接）
 >
-> ![image-20221213231519551](assets/image-20221213231519551.png)
 
 
 
@@ -503,7 +489,6 @@ public class Result {
 
 我们在进行功能开发时，都是根据如下流程进行：
 
-![image-20220904125004138](assets/image-20220904125004138.png)
 
 1. 查看页面原型明确需求
     - 根据页面原型和需求，进行表结构设计、编写接口文档(已提供)
@@ -541,8 +526,6 @@ public class Result {
 ### 2.1 查询部门
 
 #### 2.1.1 原型和需求
-
-![image-20221213234154699](assets/image-20221213234154699.png)
 
 > 查询的部门的信息：部门ID、部门名称、修改时间
 >
@@ -611,8 +594,6 @@ public class Result {
 
 #### 2.1.3 思路分析
 
-![image-20221213235157345](assets/image-20221213235157345.png)
-
 
 
 #### 2.1.4 功能开发
@@ -648,7 +629,6 @@ public class DeptController {
 
 > @Slf4j注解源码：
 >
-> ![image-20221214000909044](assets/image-20221214000909044.png)
 
 **DeptService**（业务接口）
 
@@ -698,7 +678,7 @@ public interface DeptMapper {
 
 功能开发完成后，我们就可以启动项目，然后打开postman，发起GET请求，访问 ：http://localhost:8080/depts
 
-![](assets/image-20220904130315247.png)
+
 
 
 
@@ -710,33 +690,24 @@ public interface DeptMapper {
 
 1、将资料中提供的"前端环境"文件夹中的压缩包，拷贝到一个没有中文不带空格的目录下
 
-![image-20221214100230484](assets/image-20221214100230484.png)
+
 
 
 
 2、拷贝到一个没有中文不带空格的目录后，进行解压（解压到当前目录）
 
-![image-20221214100039074](assets/image-20221214100039074.png)
 
 
 
 3、启动nginx
 
-![image-20221214100703404](assets/image-20221214100703404.png)
-
-![image-20221214101711107](assets/image-20221214101711107.png)
-
 
 
 4、打开浏览器，访问：http://localhost:90
 
-![image-20221214100918557](assets/image-20221214100918557.png)
-
 
 
 5、测试：部门管理 - 查询部门列表
-
-![image-20221214101436198](assets/image-20221214101436198.png)
 
 > 说明：只要按照接口文档开发功能接口，就能保证前后端程序交互
 >
@@ -755,7 +726,6 @@ public interface DeptMapper {
 
 #### 2.3.1 需求
 
-![](assets/image-20220904132440220.png)
 
 点击部门列表后面操作栏的 "删除" 按钮，就可以删除该部门信息。 此时，前端只需要给服务端传递一个ID参数就可以了。 我们从接口文档中也可以看得出来。
 
@@ -814,8 +784,6 @@ public interface DeptMapper {
 
 
 #### 2.3.3 思路分析
-
-![image-20221214102705490](assets/image-20221214102705490.png)
 
 > 接口文档规定：
 >
@@ -927,17 +895,11 @@ public interface DeptMapper {
 
 删除功能开发完成后，重新启动项目，使用postman，发起DELETE请求：
 
-![image-20221214112451600](assets/image-20221214112451600.png)
-
 
 
 #### 2.3.6 前后端联调
 
 打开浏览器，测试后端功能接口：
-
-![image-20221214113708369](assets/image-20221214113708369.png)
-
-![image-20221214113941657](assets/image-20221214113941657.png)
 
 
 
@@ -1015,7 +977,6 @@ public interface DeptMapper {
 
 #### 2.4.3 思路分析
 
-![image-20221214115519648](assets/image-20221214115519648.png)
 
 > 接口文档规定：
 >
@@ -1130,7 +1091,7 @@ public interface DeptMapper {
 
 新增功能开发完成后，重新启动项目，使用postman，发起POST请求：
 
-![image-20221214153758708](assets/image-20221214153758708.png)
+
 
 
 
@@ -1138,9 +1099,7 @@ public interface DeptMapper {
 
 打开浏览器，测试后端功能接口：
 
-![image-20221215105446189](assets/image-20221215105446189.png)
 
-![image-20221214154645746](assets/image-20221214154645746.png)
 
 
 
@@ -1150,17 +1109,17 @@ public interface DeptMapper {
 
 首先我们先来看下目前controller层代码：
 
-![image-20221215110553435](assets/image-20221215110553435.png)
+
 
 > 以上三个方法上的请求路径，存在一个共同点：都是以`/depts`作为开头。（重复了）
 
 在Spring当中为了简化请求路径的定义，可以把公共的请求路径，直接抽取到类上，在类上加一个注解@RequestMapping，并指定请求路径"/depts"。代码参照如下：
 
-![image-20221215111110219](assets/image-20221215111110219.png)
+
 
 > 优化前后的对比：
 >
-> ![image-20221215111309042](assets/image-20221215111309042.png)
+
 
 > 注意事项：一个完整的请求路径，应该是类上@RequestMapping的value属性 + 方法上的 @RequestMapping的value属性
 
@@ -1198,7 +1157,7 @@ public interface DeptMapper {
 
 > 使用分页解决这个问题。每次只展示一页的数据，比如：一页展示10条数据，如果还想看其他的数据，可以通过点击页码进行查询。
 
-![image-20221215141233541](assets/image-20221215141233541.png)
+
 
 要想从数据库中进行分页查询，我们要使用`LIMIT`关键字，格式为：limit  开始索引  每页显示的条数
 
@@ -1504,7 +1463,7 @@ public interface EmpMapper {
 
 前面我们已经完了基础的分页查询，大家会发现：分页查询功能编写起来比较繁琐。
 
-![image-20221215164811566](assets/image-20221215164811566.png)
+
 
 > 在Mapper接口中定义两个方法执行两条不同的SQL语句：
 >
@@ -1591,11 +1550,10 @@ public PageBean page(Integer page, Integer pageSize) {
 
 功能开发完成后，我们重启项目工程，打开postman，发起GET请求，访问 ：http://localhost:8080/emps?page=1&pageSize=5
 
-![image-20221215162008339](assets/image-20221215162008339.png)
+
 
 > 后端程序SQL输出：
 >
-> ![image-20221215174820377](assets/image-20221215174820377.png)
 
 
 
@@ -1609,7 +1567,7 @@ public PageBean page(Integer page, Integer pageSize) {
 
 #### 3.2.1 需求
 
-![image-20221215175639974](assets/image-20221215175639974.png)
+
 
 通过员工管理的页面原型我们可以看到，员工列表页面的查询，不仅仅需要考虑分页，还需要考虑查询条件。 分页查询我们已经实现了，接下来，我们需要考虑在分页查询的基础上，再加上查询条件。
 
@@ -1635,7 +1593,7 @@ order by update_time desc;
 
 #### 3.2.2 思路分析
 
-![image-20221215180528415](assets/image-20221215180528415.png)
+
 
 
 
@@ -1776,11 +1734,11 @@ public interface EmpMapper {
 
 功能开发完成后，重启项目工程，打开postman，发起GET请求：
 
-![image-20221215182344380](assets/image-20221215182344380.png)
+
 
 > 控制台SQL语句：
 >
-> ![image-20221215182952789](assets/image-20221215182952789.png)
+
 
 
 
@@ -1788,7 +1746,6 @@ public interface EmpMapper {
 
 打开浏览器，测试后端功能接口：
 
-![image-20221215183510458](assets/image-20221215183510458.png)
 
 
 
@@ -1810,7 +1767,7 @@ public interface EmpMapper {
 
 #### 3.3.1 需求
 
-![image-20221215183657413](assets/image-20221215183657413.png)
+
 
 当我们勾选列表前面的复选框，然后点击 "批量删除" 按钮，就可以将这一批次的员工信息删除掉了。也可以只勾选一个复选框，仅删除一个员工信息。
 
@@ -1876,7 +1833,6 @@ public interface EmpMapper {
 
 #### 3.3.3 思路分析
 
-![image-20221215184714815](assets/image-20221215184714815.png)
 
 > 接口文档规定：
 >
@@ -2023,11 +1979,11 @@ public interface EmpMapper {
 
 功能开发完成后，重启项目工程，打开postman，发起DELETE请求：
 
-![image-20221215190229696](assets/image-20221215190229696.png)
+
 
 > 控制台SQL语句：
 >
-> ![image-20221215190948723](assets/image-20221215190948723.png)
+
 
 
 
@@ -2035,11 +1991,8 @@ public interface EmpMapper {
 
 打开浏览器，测试后端功能接口：
 
-![image-20221215190606676](assets/image-20221215190606676.png)
 
-![image-20221215190640539](assets/image-20221215190640539.png)
 
-![](assets/image-20221215190753313.png)
 
 
 
